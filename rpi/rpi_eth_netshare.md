@@ -1,10 +1,12 @@
 
 ## Inside Ubuntu PC
+ <div>
  <img src="rpi_eth_netshare.png" alt="Ubuntu Settings"> 
+ </div>
 ```
   sudo ifconfig ethxx 192.168.129.10
 ```
-Assuming wlp1s0 ip is 192.168.129.250,
+<div> <i>Assuming wlp1s0 ip is 192.168.129.250, </i></div>
 
 ```
   sudo sysctl -w net.ipv4.ip_forward=1
@@ -12,7 +14,7 @@ Assuming wlp1s0 ip is 192.168.129.250,
 ```
  sudo vi /etc/sysctl.conf
 ```
-Uncomment net.ipv4.ip_forward=1,
+<div> <i> Uncomment net.ipv4.ip_forward=1, </i></div>
 
 ```
   sudo iptables -t nat -A POSTROUTING -o wlp1s0 -j MASQUERADE
@@ -21,8 +23,8 @@ Uncomment net.ipv4.ip_forward=1,
   sudo systemctl restart NetworkManager
   ip route show
 ```
-Expected output --> <p textdefault via 192.168.129.111 dev wlp1s0 proto dhcp src 192.168.129.250 metric 600
-
+Expected output --> 
+<div><i> textdefault via 192.168.129.111 dev wlp1s0 proto dhcp src 192.168.129.250 metric 600 </i></div>
 ## Inside Raspberry pi
 
 ```
