@@ -1,10 +1,6 @@
 
-## Inside Ubuntu PC
- <div>
- <img src="rpi_eth_netshare.png" style="float:right;width:280px;height:280px;"> 
- </div>
-```
-```
+<h1>Inside Ubuntu PC</h1> 
+ 
 ```
   sudo ifconfig ethxx 192.168.129.10
 ```
