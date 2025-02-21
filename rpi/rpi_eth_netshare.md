@@ -22,7 +22,7 @@
   ip route show
 ```
 Expected output --> 
-<p style="color:red;"> default via 192.168.129.111 dev wlp1s0 proto dhcp src 192.168.129.250 metric 600 </p>
+<p> default via 192.168.129.111 dev wlp1s0 proto dhcp src 192.168.129.250 metric 600 </p>
 
 <h2>Inside Raspberry pi </h2>
 
