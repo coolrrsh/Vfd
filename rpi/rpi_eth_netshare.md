@@ -1,5 +1,5 @@
 
-<h2>Inside Ubuntu PC</h2> 
+<h2>Inside Ubuntu </h2> 
  
 ```
   sudo ifconfig ethxx 192.168.129.10
