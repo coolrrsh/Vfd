@@ -1,0 +1,33 @@
+
+/dts-v1/;
+/plugin/;
+/ {
+    fragment@0 {
+        target = <&gpio>;
+        __overlay__ {
+            gpio0 {
+			brcm,function = <0x00>;
+			brcm,pins = <0x00>;
+			gpio-controller;       // Ensure it can generate interrupts
+                	interrupt-controller;  // Make it an interrupt source
+                	#interrupt-cells = <2>; // Two parameters for interrupts
+                	phandle = <0x67>;      // phandle
+		};
+    	};
+    };
+
+    fragent@1 {
+	target = <&spi0>;
+	__overlay__ {
+	    spidev@1{
+		#address-cells = <1>; 
+		#size-cells = <1>; 
+		compatible = "ch43x_spi"; 
+		reg = <1 0>; 
+		spi-max-frequency = <5000000>; 
+		interrupt-parent = <&gpio0>; 
+		interrupts = <0 2>; 
+	    };				
+	};	
+    };
+};
