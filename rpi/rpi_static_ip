@@ -1,0 +1,15 @@
+#eth
+sudo nano /etc/systemd/network/10-eth0.network
+[Match]
+Name=eth0
+
+[Network]
+Address=192.168.1.100/24
+Gateway=192.168.1.1
+DNS=8.8.8.8
+DNS=8.8.4.4
+
+
+#Wifi
+nmcli device wifi connect "YourSSID" password "YourPassword"
+
