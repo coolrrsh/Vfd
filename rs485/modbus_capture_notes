@@ -1,0 +1,1 @@
+sudo sh -c "watch cat /dev/ttyUSB0 | hexdump -C"
