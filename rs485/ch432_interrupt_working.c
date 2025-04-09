@@ -327,11 +327,12 @@ static uint8_t read_register(DFRobot_CH432T *handle, uint8_t reg) {
     buf[0] = 0xFD & ((reg + handle->portnum * 0x08) << CH432T_REG_SHIFT);
     buf[1] = 0xFF;
 
-    digitalWrite(handle->cs_pin, LOW);
+    digitalWrite(handle->cs_pin, LOW); 
     wiringPiSPIDataRW(handle->portnum, buf, 2);
     digitalWrite(handle->cs_pin, HIGH);
-
+      
     pthread_mutex_unlock(&ch432t_spi_lock);
+    delay(1);
     return buf[1];
 }
 
@@ -351,9 +352,9 @@ static void write_register_single(DFRobot_CH432T *handle, uint8_t reg, uint8_t d
     digitalWrite(handle->cs_pin, LOW);
     wiringPiSPIDataRW(handle->portnum, buf, 2);
     digitalWrite(handle->cs_pin, HIGH);
-
+    
     pthread_mutex_unlock(&ch432t_spi_lock);
-    delay(1); // 1 ms
+   delay(1); 
 }
 
 static void write_register_buffer(DFRobot_CH432T *handle, uint8_t reg, const uint8_t *data, size_t len) {
