@@ -1,33 +1,59 @@
-
 /dts-v1/;
 /plugin/;
+
 / {
+    compatible = "brcm,bcm2835";
+
     fragment@0 {
-        target = <&gpio>;
+        target = <&spi0>;
         __overlay__ {
-            gpio0 {
-			brcm,function = <0x00>;
-			brcm,pins = <0x00>;
-			gpio-controller;       // Ensure it can generate interrupts
-                	interrupt-controller;  // Make it an interrupt source
-                	#interrupt-cells = <2>; // Two parameters for interrupts
-                	phandle = <0x67>;      // phandle
-		};
-    	};
+            #address-cells = <1>;
+            #size-cells = <0>;
+            status = "okay";
+
+            ch432@0 {
+                compatible = "ch432_spi";
+                reg = <0>;
+                spi-max-frequency = <500000>;
+                interrupt-gpios = <&gpio 25 1>; //cs should be high
+                port-number = <0>;
+                status = "okay";
+            };
+        };
     };
 
-    fragent@1 {
-	target = <&spi0>;
-	__overlay__ {
-	    spidev@1{
-		#address-cells = <1>; 
-		#size-cells = <1>; 
-		compatible = "ch43x_spi"; 
-		reg = <1 0>; 
-		spi-max-frequency = <5000000>; 
-		interrupt-parent = <&gpio0>; 
-		interrupts = <0 2>; 
-	    };				
-	};	
+    fragment@1 {
+        target = <&gpio>;
+        __overlay__ {
+            ch432_interrupt_pins: ch432_interrupt_pins {
+                brcm,pins = <25>;
+                brcm,function = <0>; // Input
+                brcm,pull = <2>;     // Pull-up
+            };
+        };
     };
 };
+
+/*
+/dts-v1/;
+/plugin/;
+
+/ {
+	fragment@0 {
+		target = <&spi0>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			ch432@0 {
+				compatible = "ch432_spi";
+				reg = <0>;                         // CS0
+				spi-max-frequency = <1000000>;     // 1 MHz
+				interrupt-gpios = <&gpio 25 0>;
+				status = "okay";
+			};
+		};
+	};
+};
+*/
+
