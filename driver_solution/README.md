@@ -21,7 +21,7 @@ To disable the default SPI device (`spidev0.0`) and enable the custom CH432 over
 
    ```bash
    sudo cp ch432_overlay.dtb /boot/firmware/overlays/
-  ``` 
+   ``` 
   
 2. **Modify the config.txt** 
   
