@@ -21,15 +21,17 @@ To disable the default SPI device (`spidev0.0`) and enable the custom CH432 over
 
    ```bash
    sudo cp ch432_overlay.dtb /boot/firmware/overlays/
-   
-  Modify the config.txt 
+  ``` 
+  
+2. **Modify the config.txt** 
   
    ```bash
    sudo echo "dtoverlay=ch432_overlay" >> /boot/firmware/config.txt
-
-  Reboot and insert the kernel modules
+   ```
+3. **Reboot and insert the kernel modules**
   
    ```bash
    insmod ch432.ko
-
-  Finally, communicate /dev/ttyWC* file for Modbus communication
+   ```
+  
+Finally, communicate /dev/ttyWC* file for Modbus communication
