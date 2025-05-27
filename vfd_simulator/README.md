@@ -1,22 +1,38 @@
 # Modbus RS485 Communication (Master-Slave) Example
 
-This project demonstrates Modbus RTU communication over RS485 between a Raspberry Pi (acting as a **Modbus master**) and a PC (acting as a **Modbus slave**) connected via a USB-to-RS485 adapter.
+![Modbus RS485 System Diagram](../images/USB_HAT_connection.png)  
+*Figure 1: Master-Slave Communication Architecture*
 
-## Overview
+This project demonstrates Modbus RTU communication over RS485 between:
+- **Master**: Raspberry Pi (with RS485 HAT)
+- **Slave**: PC with USB-to-RS485 adapter
 
-The slave application is written in C using the `libmodbus` library and runs on a PC. The Raspberry Pi runs a separate master application (`vfd_app`) that communicates with the slave device using RS485. This setup is useful for developing and testing Modbus-based industrial control systems.
+## System Overview
 
-## Setup and Execution
+The system consists of:
+1. **Slave Application**: Written in C using `libmodbus`, running on PC
+2. **Master Application**: `vfd_app` running on Raspberry Pi
+3. **Physical Layer**: RS485 serial communication (differential signaling)
 
-1. **Install Dependencies**  
-   On the PC (slave side), ensure that the required Modbus library is installed:
+## Hardware Connection Diagram
 
-   ```bash
-   sudo apt-get install libmodbus
-   gcc modbus_slave_usb_rs485.c  -lmodbus -o vfd_slave
-   ./vfd_slave
+### Wiring Specification
+| Master (RPi) | Slave (PC) | Cable Color |
+|--------------|------------|-------------|
+| RS485+ (A+)  | A+         | Brown       |
+| RS485- (B-)  | B-         | Blue        |
+| GND          | GND        | Green/Yellow|
 
-  On the Raspberry Pi,
-  ```bash
-   ./vfd_app
+> **Note**: Termination resistor (120Ω) required if cable length > 10m
 
+## Software Implementation
+
+### Slave Setup (PC)
+```bash
+# Install dependencies
+sudo apt-get update
+sudo apt-get install libmodbus-dev build-essential
+
+# Compile and run slave application
+gcc modbus_slave_usb_rs485.c -lmodbus -o vfd_slave -Wall
+./vfd_slave

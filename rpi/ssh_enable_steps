@@ -1,6 +1,0 @@
-```
-ssh-keygen -b 4096 -t rsa
-#paste public key in github keys
-git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
-```
