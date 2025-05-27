@@ -51,7 +51,7 @@ Variable Frequency Drive Controller with RS-485 Modbus RTU for High-RPM Motor Co
     
     Reboot the RaspberryPi board to make sure the spidev0.0 is available for rx/tx
     ```bash
-    sudo
+    sudo reboot
     ```
     Compile and start the application, 
     
