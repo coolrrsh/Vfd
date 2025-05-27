@@ -9,7 +9,7 @@ Variable Frequency Drive Controller with RS-485 Modbus RTU for High-RPM Motor Co
 ## Schematics
 
 ### RS485 Connection Diagram
-![RS485 Connection](RJ45_HAT_connection.png)
+![RS485 Connection](images/RJ45_HAT_connection.png)
 
 **RJ45 (RS-485 IN/OUT) Pinout:**
 
@@ -25,7 +25,7 @@ Variable Frequency Drive Controller with RS-485 Modbus RTU for High-RPM Motor Co
 | 8     | Common (GND)    |
 
 ### Raspberry Pi Connection
-![Raspberry Pi Connection](RPI_HAT_connection.png)
+![Raspberry Pi Connection](images/RPI_HAT_connection.png)
 
 ## Setup Steps
 
