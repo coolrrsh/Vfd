@@ -43,4 +43,6 @@ Variable Frequency Drive Controller with RS-485 Modbus RTU for High-RPM Motor Co
     cd WiringPi
     ./build
     sudo raspi-config -> enable spi interface
-   ```
+    sudo reboot -> make sure /dev/spidev0.0 is up
+    gcc ch432_polling_based.c -lwiringPi -o vfd_app && ./vfd_app
+    ```

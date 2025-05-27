@@ -2,8 +2,4 @@ dtc -I fs -O dts /proc/device-tree > live-device-tree.dts
 
 dtc -@ -I dts -O dtb -o spi_patch.dtbo spi_patch.dts
 
-pip install --break-system-packages modbus-tk
-
-sudo ./Logic-2.4.22-linux-x64.AppImage --no-sandbox 
-
 dtc -I dts -O dtb -o ch432-overlay.dtbo ch432-overlay.dts 
